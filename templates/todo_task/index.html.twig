@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello TodoTaskController!{% endblock %}
+
+{% block body %}
+
+<section class="tasks">
+
+	{% for task in tasks %}
+		<task>
+			<h1> {{ task.title }} </h1>
+			<div class="metadata"> Créé le {{ task.createdAt | date('d/m/Y') }} à {{ task.createdAt | date('H:i') }} </div>
+			<div class="content">
+				{{ task.description | raw }}
+			</div>
+			<a href="{{ path('todo_task_show', {'id': task.id}) }}" class="btn btn-primary"> Afficher la tâche </a>
+		</task>
+	{% endfor %}
+</secontion>
+
+{% endblock %}

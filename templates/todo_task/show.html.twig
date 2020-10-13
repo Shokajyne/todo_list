@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+	<h1> {{ task.title }} </h1> 
+	<h5> | {{ task.category.title }} </h5>
+	<div class="metadata"> Créé le {{ task.createdAt | date('d/m/Y') }} à {{ task.createdAt | date('H:i') }} </div>
+	
+	<h3> Desscription </h3>
+	{{ task.description | raw}}
+
+	<h3> Tâche faites ? </h3>
+	{{ task.done | raw }}
+
+	<section id="subtasks">
+		{% for subTask in task.subTasks %}
+			<div class="subtask">
+				<div class="row">
+					<div class="col-3">
+						{{ subTask.title }}
+					</div>
+					<div class="col">
+						{{ subTask.description }}
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+	</section
+
+	{% if app.user %}
+		<h1> Ajouter une nouvelle sous-tâche </h1>
+		
+		{{ form_start(formSubTask) }}
+
+			{{ form_row(formSubTask.title) }}
+			{{ form_row(formSubTask.description) }}
+
+			<button type="submit" class="btn btn-success">
+				Ajouter la sous-tâche
+			</button>
+
+		{{ form_end(formSubTask) }}
+	{% endif %}
+
+{% endblock %}

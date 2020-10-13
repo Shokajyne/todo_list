@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme formTask 'bootstrap_4_layout.html.twig' %}
+
+{% block body %}
+
+	<h1> 
+		{% if editMode %} 
+			Modification d'une tâche
+		{% else %}
+			Création d'une tâche
+		{% endif %}		
+	</h1>
+
+	{{ form_start(formTask) }}
+
+	{{ form_row(formTask.title, {'attr':{'placeholder':'Titre'}}) }}
+	{{ form_row(formTask.category) }}
+	{{ form_row(formTask.description, {'attr':{'placeholder':'Que doit-on faire ?'}}) }}
+
+	<button type="submit" class="btn btn-success">
+		{% if editMode %} 
+			Enregistrer
+		{% else %}
+			Créer la tâche
+		{% endif %}
+	</button>
+
+	{{ form_end(formTask) }}
+
+{% endblock %}
