@@ -3,7 +3,7 @@
 {% block body %}
 
 	<h1> {{ task.title }} </h1> 
-	<h5> | {{ task.category.title }} </h5>
+	<h4> -- {{ task.category.title }} </h4>
 	<div class="metadata"> Créé le {{ task.createdAt | date('d/m/Y') }} à {{ task.createdAt | date('H:i') }} </div>
 	
 	<h3> Desscription </h3>
